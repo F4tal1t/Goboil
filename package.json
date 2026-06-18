@@ -1,0 +1,22 @@
+{
+  "name": "goboil",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "packageManager": "bun",
+  "engines": {
+    "node": ">=22"
+  },
+  "workspaces": ["packages/*"],
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest",
+    "turbo": "^2.9.18"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}
