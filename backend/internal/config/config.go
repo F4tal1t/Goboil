@@ -12,12 +12,13 @@ import (
 )
 
 type Config struct {
-	Primary        Primary              `koanf:"primary" validate:"required"`
-	ServerConfig   ServerConfig         `koanf:"server" validate:"required"`
-	DatabaseConfig DatabaseConfig       `koanf:"database" validate:"required"`
-	RedisConfig    RedisConfig          `koanf:"redis" validate:"required"`
-	AuthConfig     AuthConfig           `koanf:"auth" validate:"required"`
-	Observability  *ObservabilityConfig `koanf:"observability" validate:"required"`
+	Primary       Primary              `koanf:"primary" validate:"required"`
+	Server        ServerConfig         `koanf:"server" validate:"required"`
+	Database      DatabaseConfig       `koanf:"database" validate:"required"`
+	Redis         RedisConfig          `koanf:"redis" validate:"required"`
+	Auth          AuthConfig           `koanf:"auth" validate:"required"`
+	Integration   IntegrationConfig    `koanf:"integration" validate:"required"`
+	Observability *ObservabilityConfig `koanf:"observability" validate:"required"`
 }
 
 type Primary struct {
@@ -52,6 +53,9 @@ type RedisConfig struct {
 
 type AuthConfig struct {
 	SecretKey string `koanf:"secret_key" validate:"required"`
+}
+type IntegrationConfig struct {
+	ResendAPIKey string `koanf:"resend_api_key" validate:"required"`
 }
 
 func LoadConfig() (*Config, error) {
