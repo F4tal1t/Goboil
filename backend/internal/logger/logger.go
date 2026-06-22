@@ -7,6 +7,7 @@ import (
 	"os"
 	"time"
 
+	"github.com/newrelic/go-agent/v3/integrations/logcontext-v2/zerologWriter"
 	"github.com/F4tal1t/Goboil/internal/config"
 	"github.com/newrelic/go-agent/v3/newrelic"
 	"github.com/rs/zerolog"
@@ -54,6 +55,12 @@ func (ls *LoggerService) Shutdown(){
 		ls.nrApp.Shutdown(10* time.Second)
 	}
 }
+
+// GetApplication returns the New Relic application instance
+func (ls *LoggerService) GetApplication() *newrelic.Application {
+	return ls.nrApp
+}
+
 
 func NewLogger(level string, isProd bool) zerolog.Logger {
 	return NewLoggerWithService(&config.ObservabilityConfig{

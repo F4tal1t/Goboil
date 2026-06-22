@@ -1,5 +1,8 @@
 version: '3'
 
+shell:
+  sh: bash
+
 vars:
   BOILERPLATE_DB_DSN: '{{.BOILERPLATE_DB_DSN | default ""}}'
 
@@ -14,7 +17,12 @@ tasks:
     desc: confirmation prompt
     cmds:
     - |
-      echo -n 'Are you sure? [y/N] ' && read ans && [ ${ans:-N} = y ]
+        echo "Are you sure? [y/N]"
+        read -r reply
+        case "$reply" in
+          [Yy]*) exit 0 ;;
+          *) exit 1 ;;
+        esac
     silent: true
     internal: true
 

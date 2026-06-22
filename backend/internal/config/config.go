@@ -90,8 +90,8 @@ func LoadConfig() (*Config, error) {
 	// Override service name and environment from primary config
 	mainConfig.Observability.ServiceName = "boilerplate"
 	mainConfig.Observability.Validate()
-	err != nil{
-		logger.Fatal().Err(err).Msg("invalid observability config"),
+	if err != nil{
+		logger.Fatal().Err(err).Msg("invalid observability config")
 	}
 
 	return mainConfig, nil

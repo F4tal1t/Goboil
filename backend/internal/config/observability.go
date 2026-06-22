@@ -10,7 +10,7 @@ type ObservabilityConfig struct {
 	Environment  string             `koanf:"environment" validate:"required"`
 	Logging      LoggingConfig      `koanf:"logging" validate:"required"`
 	NewRelic     NewRelicConfig     `koanf:"new_relic" validate:"required"`
-	HealthChecks HealthChecksConfig `"koanf:"health_checks" validate:"required"`
+	HealthChecks HealthChecksConfig `koanf:"health_checks" validate:"required"`
 }
 
 type LoggingConfig struct {
