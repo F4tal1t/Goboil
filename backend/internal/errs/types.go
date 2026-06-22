@@ -4,6 +4,8 @@ import (
 	"net/http"
 )
 
+//Common Types of Error around 95% 
+
 func NewUnauthorizedError(message string, override bool) *HTTPError {
 	return &HTTPError{
 		Code:     MakeUpperCaseWithUnderscores(http.StatusText(http.StatusUnauthorized)),
